@@ -1,5 +1,5 @@
 
-import { galleryItems } from './gallery-items.js';
+// import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
@@ -14,9 +14,6 @@ createGallery();
 
 document.querySelector('a.gallery__image').onclick = () => {
 
-	basicLightbox.create(`
-		<img width="1400" height="900" src="${description}">
-	`).show()
+	basicLightbox.create(createGallery).show()
 
 }
-
