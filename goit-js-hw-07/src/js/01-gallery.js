@@ -1,5 +1,7 @@
+import { galleryItems } from './gallery-items.js';
 
-// import { galleryItems } from './gallery-items.js';
+console.log(galleryItems);
+
 
 console.log(galleryItems);
 
@@ -10,10 +12,19 @@ const createGallery = () => {
    
    galleryContainer.insertAdjacentHTML('afterbegin', galleryListElements);  
 }
-createGallery();
+// createGallery();
 
-document.querySelector('a.gallery__image').onclick = () => {
-
-	basicLightbox.create(createGallery).show()
-
+const handleCloseByEscp = (event) => {
+  makeLightbox(
+    event.dataset.preview,
+  );
 }
+basicLightbox.create(
+  createGallery(),{
+onShow: () => {
+window.addEventListener('keydown', handleCloseByEscp)
+},
+onClose: () => {
+window.removeEventListener('keydown', handleCloseByEscp)
+}
+})
