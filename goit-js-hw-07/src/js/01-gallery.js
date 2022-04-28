@@ -13,15 +13,13 @@ const createGallery = () => {
 
 
 const handleCloseByEscp = (event) => {
-  const list = event.target.closest('a');
-  list.preventDefault();
+  const a = document.querySelector('a');
+  a.eddEventListener('keydown', (e) => e.preventDefault());
   makeLightbox(
     event.dataset.preview,
-  );
-  
+  ); 
 }
 basicLightbox.create(
-
   createGallery(),{
 onShow: () => {
 window.addEventListener('keydown', handleCloseByEscp)
