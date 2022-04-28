@@ -7,7 +7,7 @@
     <title>SimpleLightbox library</title>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/styles.css" />
-
+    <link rel="stylesheet" href="./simplelightbox/simple-lightbox.min.css"/>
  
     
   </head>
@@ -18,7 +18,13 @@
     <ul class="gallery"></ul>
  
     <script src="js/02-lightbox.js" type="module"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="./simplelightbox/simple-lightbox.min.js"></script>
+
+    <script>
+      let lightbox = new SimpleLightbox('.gallery a', {captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,});
+    </script>
   
   </body>
 </html>
