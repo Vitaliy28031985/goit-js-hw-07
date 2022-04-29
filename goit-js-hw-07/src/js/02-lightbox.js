@@ -13,28 +13,9 @@ const createGallery = () => {
 }
 createGallery();
 
-galleryContainer.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (e.target.nodeName !== "IMG") {
-    return;
-  }
-  let gallery = new SimpleLightbox('.gallery a');
-gallery.on('show.simplelightbox', function () {
-  `
-  <img src="${e.target.dataset.src}" alt="${description}" width="800" height="600">
-`
-}).open();
-});
 
 new SimpleLightbox('.gallery a', {
   captions: true,
+  captionsData: "alt",
   captionDelay: 250,
-  captionsData: 'alt',
-  showCounter: true,
-  enableKeyboard: true,
-  docClose: true,
-  captionPosition: 'bottom',
-  scrollZoom: true,
-  preloading: false,
-  overlay: false,
 });
