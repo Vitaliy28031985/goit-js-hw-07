@@ -7,7 +7,7 @@ console.log(galleryItems);
 const galleryContainer = document.querySelector('.gallery');
 console.log(galleryContainer);
 const createGallery = () => {
-  const galleryListElements = galleryItems.map(({preview, description, original,}) => `<li class="gallery__item"><a class="gallery__link" href="${original}"><img class="gallery__image" alt="${description}" src="${preview}" data-source="${original}"></a></li>`).join('');
+  const galleryListElements = galleryItems.map(({ description, original, preview,}) => `<li class="gallery__item"><a class="gallery__link" href="${original}" data-text="${description}"><img class="gallery__image" alt="${description}" src="${preview}"></a></li>`).join('');
    
    galleryContainer.insertAdjacentHTML('afterbegin', galleryListElements);  
 }
@@ -21,7 +21,20 @@ galleryContainer.addEventListener("click", (e) => {
   let gallery = new SimpleLightbox('.gallery a');
 gallery.on('show.simplelightbox', function () {
   `
-  <img src="${e.target.dataset.source}" width="800" height="600">
+  <img src="${e.target.dataset.src}" alt="${description}" width="800" height="600">
 `
 }).open();
+});
+
+new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionDelay: 250,
+  captionsData: 'alt',
+  showCounter: true,
+  enableKeyboard: true,
+  docClose: true,
+  captionPosition: 'bottom',
+  scrollZoom: true,
+  preloading: false,
+  overlay: false,
 });
