@@ -20,6 +20,8 @@ galleryContainer.addEventListener("click", (e) => {
   }
   let gallery = new SimpleLightbox('.gallery a');
 gallery.on('show.simplelightbox', function () {
-	e.target.dataset.source;
+  `
+  <img src="${e.target.dataset.source}" width="800" height="600">
+`
 }).open();
 });
